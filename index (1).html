@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100円の贅沢コンシェルジュ</title>
+    
+    <meta property="og:title" content="100円の贅沢コンシェルジュ" />
+    <meta property="og:description" content="100円で得られる最高の幸福。シャム猫の執事があなたの日常を彩る提案をいたします。" />
+    <meta property="og:image" content="https://あなたのユーザー名.github.io/リポジトリ名/concierge.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-gold: #d4af37;
+            --bg-cream: #fffdf9;
+            --text-main: #4a4a4a;
+            --white: #ffffff;
+        }
+        body {
+            font-family: 'Zen Maru Gothic', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        header {
+            width: 100%;
+            padding: 25px 0;
+            background: var(--white);
+            text-align: center;
+            border-bottom: 4px solid var(--primary-gold);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        h1 { margin: 0; font-size: 1.5rem; color: var(--primary-gold); }
+        .subtitle { font-size: 0.8rem; margin-top: 5px; opacity: 0.7; }
+        main {
+            width: 90%;
+            max-width: 450px;
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        /* コンシェルジュエリア */
+        .concierge-container {
+            margin-top: 20px;
+            text-align: center;
+            width: 100%;
+        }
+        .concierge-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid var(--white);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            object-fit: cover;
+            background-image: url('./concierge.png');
+            background-size: cover;
+            background-position: center;
+            background-color: #e0e0e0;
+            margin: 0 auto;
+        }
+        /* 吹き出し */
+        .speech-bubble {
+            position: relative;
+            background: var(--white);
+            border: 2px solid var(--primary-gold);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 25px;
+            box-sizing: border-box;
+            min-height: 110px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            font-weight: 700;
+        }
+        .speech-bubble:after {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            margin-left: -12px;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-bottom: 12px solid var(--primary-gold);
+        }
+        /* 操作エリア */
+        .controls {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+        }
+        .input-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+        input[type="number"] {
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            width: 100px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-family: inherit;
+        }
+        .btn-suggest {
+            background: var(--primary-gold);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 4px 0 #b08d2a;
+        }
+        .btn-suggest:active {
+            transform: translateY(2px);
+            box-shadow: 0 2px 0 #b08d2a;
+        }
+        /* シェア */
+        #share-box {
+            margin-top: 20px;
+            display: none;
+        }
+        .x-link {
+            color: #555;
+            text-decoration: none;
+            font-size: 0.8rem;
+            border: 1px solid #ddd;
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+        /* 広告タグエリア */
+        .ad-container {
+            margin: 40px 0;
+            text-align: center;
+        }
+        footer {
+            width: 100%;
+            background: #f8f8f8;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.75rem;
+            border-top: 1px solid #eee;
+        }
+        footer a { color: #888; text-decoration: none; margin: 0 10px; }
+        /* モーダル表示 */
+        .modal {
+            display: none;
+            position: fixed;
+            top:0; left:0; width:100%; height:100%;
+            background: rgba(0,0,0,0.6);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal:target { display: flex; }
+        .modal-body {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 80%;
+            max-width: 400px;
+        }
+        /* アニメーション */
+        @keyframes pop {
+            0% { transform: scale(0.95); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .animate-pop { animation: pop 0.4s ease-out forwards; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>100円の贅沢コンシェルジュ</h1>
+        <div class="subtitle">日常にひそむ「小さな至福」を見つける場所</div>
+    </header>
+    <main>
+        <section class="concierge-container">
+            <div class="concierge-img" title="シャム猫の執事"></div>
+            
+            <div class="speech-bubble" id="message">
+                おかえりなさいませ。本日は何円ほど使って、心を豊かにいたしましょうか？
+            </div>
+        </section>
+
+        <section class="controls">
+            <div class="input-box">
+                <input type="number" id="budget-input" value="100" step="100" min="10">
+                <span>円</span>
+            </div>
+            <button class="btn-suggest" onclick="getAdvice()">最高の体験を提案してもらう</button>
+            
+            <div id="share-box">
+                <a id="x-btn" href="#" target="_blank" class="x-link">𝕏で結果を報告する</a>
+            </div>
+        </section>
+
+        <section class="ad-container">
+            <a href="https://px.a8.net/svt/ejp?a8mat=4AVB47+GC8AGI+5TL0+5YZ75" rel="nofollow">
+            <img border="0" width="300" height="250" alt="" src="https://www23.a8.net/svt/bgt?aid=260121607988&wid=001&eno=01&mid=s00000027162001003000&mc=1"></a>
+            <img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4AVB47+GC8AGI+5TL0+5YZ75" alt="">
+        </section>
+    </main>
+
+    <footer>
+        <nav>
+            <a href="#privacy">プライバシーポリシー</a>
+        </nav>
+        <p>&copy; 2026 100円の贅沢コンシェルジュ</p>
+    </footer>
+
+    <div id="privacy" class="modal">
+        <div class="modal-body">
+            <h3>プライバシーポリシー</h3>
+            <p style="font-size: 0.8rem; line-height: 1.5; text-align: left;">
+                当サイトは広告配信サービス（A8.net）を利用しており、クッキー（Cookie）を使用して匿名情報を収集する場合があります。これらの情報はサービス向上のために利用され、個人を特定するものではありません。情報の提供を望まない場合はブラウザの設定でクッキーを無効にできます。
+            </p>
+            <a href="#" style="color: var(--primary-gold); font-weight: bold;">[ 閉じる ]</a>
+        </div>
+    </div>
+
+    <script>
+        const database = {
+            100: [
+                "コンビニのホットコーヒーを買って、街で一番見晴らしの良いベンチで『貴族の休息』を演じる。",
+                "あえて10円玉10枚に両替して、駄菓子屋で子供の頃のように悩み抜いて買い物を楽しむ。",
+                "100円ショップで直感だけで『無駄だけど美しいもの』を1つ買い、名前を付けて愛でる。",
+                "入浴剤を一つ買い、スマホを置いて、キャンドルの明かりだけで30分間お湯に浸かる。",
+                "スーパーで一番安くなっている季節の果物を一つだけ買い、丁寧に剥いて味わう。"
+            ],
+            300: [
+                "少し高いプレミアムなアイスを買い、冷凍庫でキンキンに冷やしたスプーンで食べる。",
+                "地元の銭湯へ行き、湯上がりにコーヒー牛乳を腰に手を当てて飲み干す。",
+                "一輪挿し用の季節の花を買い、デスクに飾って眺めながらお茶を飲む。",
+                "コンビニのホットスナックを数種類買い、自分だけの『豪華オードブルプレート』を作る。"
+            ],
+            500: [
+                "古本屋でジャケ買いした一冊を、静かな喫茶店で一杯のコーヒーと共に読み耽る。",
+                "普段は選ばない贅沢なトッピングを全部乗せた牛丼を、王者の心持ちで食す。",
+                "デパ地下の閉店間際、半額になった最高級の惣菜を一つだけ買って帰る。"
+            ]
+        };
+
+        function getAdvice() {
+            const input = document.getElementById('budget-input');
+            const message = document.getElementById('message');
+            const shareBox = document.getElementById('share-box');
+            const xBtn = document.getElementById('x-btn');
+            
+            const budget = parseInt(input.value);
+            let category = 100;
+            if (budget >= 500) category = 500;
+            else if (budget >= 300) category = 300;
+            const options = database[category];
+            const advice = options[Math.floor(Math.random() * options.length)];
+
+            message.classList.remove('animate-pop');
+            void message.offsetWidth; 
+            
+            message.innerHTML = `<span style="color:var(--primary-gold); font-size:0.8rem;">[${budget}円の提案]</span><br>${advice}`;
+            message.classList.add('animate-pop');
+
+            shareBox.style.display = 'block';
+            const text = encodeURIComponent(`【100円の贅沢コンシェルジュ】\n${budget}円の贅沢提案：${advice}\n`);
+            xBtn.href = `https://twitter.com/intent/tweet?text=${text}&url=${encodeURIComponent(window.location.href)}`;
+        }
+    </script>
+</body>
+</html>
+    
+  </body>
+  
+</html>
